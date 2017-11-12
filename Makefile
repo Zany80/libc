@@ -20,9 +20,8 @@ bin/src/%.c.o:src/%.c include
 
 LIB=bin/libc.o
 
-$(LIB): $(LINKER) $(OBJECTS)
+$(LIB): bin/src/crt0.asm.o $(OBJECTS)
 	scas -c $^ -o $@ $(ASFLAGS)
 
 clean:
 	$(RM) $(LIB) $(OBJECTS)
-
