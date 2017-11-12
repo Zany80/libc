@@ -1,4 +1,5 @@
 SDK_DIR=../..
+DEVICE=/dev/sdb
 
 AS=scas
 CC=kcc
@@ -18,6 +19,7 @@ bin/src/%.c.o:src/%.c $(SDK_DIR)/include
 	$(AS) -c bin/$<.asm -o $@ $(ASFLAGS)
 
 ROM=bin/hello_world.bin
+PNG=bin/hello_world.png
 
 $(ROM): $(SDK_DIR)/bin/libc.o $(OBJECTS)
 	scas $^ -o $@ $(ASFLAGS)
@@ -27,3 +29,12 @@ clean:
 
 run:
 	zenith80 --file $(ROM)
+
+$(PNG): $(ROM)
+	cat icon.png $(ROM) > $(PNG)
+
+burn: $(PNG)
+	dd if=$(PNG) of=$(DEVICE) status=progress
+
+from_disk:
+	zenith80 --file $(DEVICE) --real --wait --format=png
