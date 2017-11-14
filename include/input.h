@@ -9,8 +9,11 @@ enum keycode_t{
 	keyAND,keyASTERISK,keyLEFT_PARENTHESES,keyRIGHT_PARENTHESES,
 	keyQ,keyW,keyE,keyR,keyT,keyY,keyU,keyI,keyO,keyP,
 	keyA,keyS,keyD,keyF,keyG,keyH,keyJ,keyK,keyL,keyCOLON,
-	keyZ,keyX,keyC,keyV,keyB,keyN,keyM,keyLEFTANGLE,keyRIGHTANGLE,keyQUESTION
+	keyZ,keyX,keyC,keyV,keyB,keyN,keyM,keyLEFTANGLE,keyRIGHTANGLE,keyQUESTION,
+	keyUP=0xD2,keyLEFT=0xDB,keyDOWN,keyRIGHT
 };
+
+//11010010
 
 typedef enum keycode_t keycode_t;
 

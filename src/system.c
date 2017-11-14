@@ -41,7 +41,13 @@ void memcpy(char * dest, const char * src,int length){
 	}
 }
 
-void putch(char c);
+void memfill(char *dest,char val,int length){
+	int i;
+	for (i = 0; i < length; i++) {
+		dest[i]=val;
+	}
+}
+
 int strlen(const char *s){
 	int i = 0;
 	char cont = 1;
