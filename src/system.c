@@ -1,4 +1,5 @@
 #include <system.h>
+#include <output.h>
 
 void halt() __naked{
 	__asm
@@ -63,7 +64,7 @@ int strlen(const char *s){
 	return i;
 }
 
-short swapBanks(char bank,char index) __naked{
+short _swapBanks(char bank,char index) __naked{
 	__asm
 	pop af
 	pop de
@@ -75,4 +76,18 @@ short swapBanks(char bank,char index) __naked{
 	ret
 	__endasm;
 	bank;index;
+}
+
+void swapBanks(char bank, char index){
+	if (_swapBanks(bank,index) != 0) {
+		// Failed to swap banks!
+		panic("RAM error!");
+	}
+}
+
+void panic(char *what){
+	cls();
+	puts(what);
+	puts("\n\nTo ignore this error, right click anywhere in the emulator");
+	halt();
 }
