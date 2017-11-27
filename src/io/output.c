@@ -27,6 +27,22 @@ void putch(char c){
 }
 
 void puts(char *str){
+	//DEPRECATED
 	while((*str)!=0)
 		putch(*str++);
+}
+
+void print(char * str,int pos,char color,char size) {
+	__asm
+	pop af
+	pop hl
+	pop bc
+	pop de
+	push de
+	push bc
+	push hl
+	push af
+	ld a, 4
+	out (2), a
+	__endasm;
 }
