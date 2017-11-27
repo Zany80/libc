@@ -27,12 +27,12 @@ void putch(char c){
 }
 
 void puts(char *str){
-	//DEPRECATED
+	//DEPRECATED - use text() instead
 	while((*str)!=0)
 		putch(*str++);
 }
 
-void print(char * str,int pos,char color,char size) {
+void text(char * str,char x,char y,char color,char size) {
 	__asm
 	pop af
 	pop hl
@@ -45,4 +45,5 @@ void print(char * str,int pos,char color,char size) {
 	ld a, 4
 	out (2), a
 	__endasm;
+	str;x;y;color;size;
 }
