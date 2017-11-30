@@ -3,15 +3,15 @@
 
 char *title() __naked{
 	__asm
-	.asciiz "Hello, World"
+	.asciiz "Test1_111417_2017"
 	__endasm;
 }
+
+int i=7;
 
 void main(){
 	int i;
 	puts((char*)title);
-	for (i = 0; i != 10; i++) {
-		putch( '0' + i );
-	}
+	puts("I am a test program! Are you a test program?");
 	halt();
 }

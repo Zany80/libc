@@ -9,7 +9,7 @@ SPRITES_SOURCES=$(addprefix sprites/,sprites.c)
 FP_SOURCES=$(addprefix fp/,_fsgt.c _fslt.c _fsadd.c _fseq.c _fssub.c)
 SDCC_SOURCES=$(addprefix sdcc/,call_hl.c)
 SOURCES=$(addprefix src/,$(IO_SOURCES) $(MAIN_SOURCES) $(FP_SOURCES) \
-$(SDCC_SOURCES) $(SPRITES_SOURCES))
+$(SDCC_SOURCES) $(SPRITES_SOURCES)) src/linker.asm
 OBJECTS=$(addprefix bin/,$(addsuffix .o,$(basename $(SOURCES))))
 
 bin/src/%.o:src/%.asm include
