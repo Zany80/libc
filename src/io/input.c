@@ -46,3 +46,4 @@ char *toAscii(keycode_t keycode){
 	}
 	return c;
 }
+

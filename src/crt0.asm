@@ -6,6 +6,7 @@ start:
 	;//call __initialize_globals
 	jp _main
 
+.function __initialize_globals, __initialize_globals, __initialize_globals_end
 __initialize_globals:
     ; Note: this could be more optimized if we could toggle auto-relocation in code
     ld hl, __s_initialized_end
@@ -21,6 +22,7 @@ __initialize_globals:
     ldir
     ret
 
+__initialize_globals_end:
 
 ; Assign some labels to the start of some sections
 .area _INITIALIZER
