@@ -25,3 +25,12 @@ typedef void (*function)();
 function PAGED_CALL(function func,unsigned char page);
 void * PAGED_ADDRESS(int address);
 #define PAGED_POINTER(x) PAGED_ADDRESS((int)x)
+
+#define setStack(x) __asm ld sp, x __endasm
+#define PAGE0 0x4000
+#define PAGE1 0x8000
+#define PAGE2 0xC000
+
+// SP is decremented before the value is copied, so this wraps around to the top of page 3
+
+#define PAGE3 0x0000
