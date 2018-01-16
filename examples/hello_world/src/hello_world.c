@@ -1,17 +1,10 @@
-#include <system.h>
-#include <output.h>
-
-char *title() __naked{
-	__asm
-	.asciiz "Hello, World"
-	__endasm;
-}
+// Sets the title in the metadata.
+TITLE("Hello, World")
 
 void main(){
-	int i;
+	// puts is a standard function for showing text
+	// title is an automatic pointer to the title as set by the TITLE macro
 	puts((char*)title);
-	for (i = 0; i != 10; i++) {
-		putch( '0' + i );
-	}
+	// halts execution until there is an interrupt
 	halt();
 }
