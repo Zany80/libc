@@ -1,10 +1,18 @@
-SDK_DIR=../..
-DEVICE=/dev/sdb
+SDK_DIR=../../
+# Default to something that won't harm the system
+DEVICE=/dev/null
 
 AS=scas
+LD=scas
 CC=kcc
-ASFLAGS=-fexplicit-export -fexplicit-import -I$(SDK_DIR)/include
-CFLAGS=--nostdinc --nostdlib -I$(SDK_DIR)/include --no-std-crt0 --std-sdcc99 -mz80
+
+_P=-Wp,-include -Wp,
+
+include $(SDK_DIR)/flags.make
+
+ASFLAGS=-fexplicit-export -fexplicit-import -Iheaders -I$(SDK_DIR)/include
+CFLAGS=--nostdinc --nostdlib -Iheaders -I$(SDK_DIR)/include --no-std-crt0 \
+	--std-sdcc99 -mz80 $(addprefix $(_P),$(STD_INCLUDES))
 
 SOURCES=$(addprefix src/, hello_world.c)
 OBJECTS=$(addprefix bin/,$(addsuffix .o,$(SOURCES)))
