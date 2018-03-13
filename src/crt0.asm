@@ -1,4 +1,4 @@
-.db "ZENITH"
+.db "ZANY"
 .dw _title
 .dw start
 
